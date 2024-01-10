@@ -2,19 +2,44 @@ import os
 import sys
 import shutil
 
-try:
-  os.environ['PLUTO_DIR']
-except KeyError:
-  print('PLUTO_DIR not defined. Setting it to the Current Directory')
-  pluto_directory = os.getcwd()
-  pass
-else:
-  pluto_directory = os.environ['PLUTO_DIR']
+#try:
+#  os.environ['PLUTO_DIR']
+#except KeyError:
+#  print('PLUTO_DIR not defined. Setting it to the Current Directory')
+#  pluto_directory = os.getcwd()
+#  pass
+#else:
+#  pluto_directory = os.environ['PLUTO_DIR']
+pluto_directory = '/home/martin/PLUTO'
 
 sys.path.append(pluto_directory + '/Tools/Python/')
 import menu
 import configure
-from make_problem import MakeProblem
+from make_my_own_problem import MakeProblem
+
+def ChooseProblem(pluto_dir):
+  while True:
+    menu.SetTitle("Title1")
+    problem_dir = menu.Browse(os.listdir(pluto_dir + '/Test_Problems'))
+    problem_dir = pluto_dir + '/Test_Problems/' + problem_dir
+    problem_name = menu.Browse(os.listdir(problem_dir))
+    problem_dir += "/" + problem_name
+    work_dir = os.getcwd() + "/" + problem_name
+    while os.path.exists(work_dir):
+      work_dir += str(1)
+    shutil.copytree(problem_dir, work_dir)
+
+    if not os.path.exists(work_dir+'/init.c'):
+      shutil.copy(pluto_dir+'/Src/Templates/init.c',work_dir+'/init.c')
+    
+    if not os.path.exists(work_dir+'/pluto.ini'):
+      shutil.copy(pluto_dir+'/Src/Templates/pluto.ini',work_dir+'/pluto.ini')
+
+    MakeProblem(work_dir, pluto_dir, 0, 1)
+    
+    menu.Print('', 0)
+    sys.exit(5)
+    
 
 
 def PlutoInterface(pluto_dir, do_auto_update = False):
@@ -151,9 +176,10 @@ if __name__ == "__main__":   # starts from here
 
   print('\n> Loading PLUTO Interface...')
   
-  if auto_update == 1:
-    PlutoInterface(pluto_directory,do_auto_update=True)
-  else:
-    PlutoInterface(pluto_directory)
+  #if auto_update == 1:
+  #  PlutoInterface(pluto_directory,do_auto_update=True)
+  #else:
+  #  PlutoInterface(pluto_directory)
+  ChooseProblem(pluto_directory)
   
   

@@ -1,0 +1,12 @@
+USER           = martin
+WORKING_DIR    = /home/martin/PLUTO
+SYSTEM_NAME    = Linux
+NODE_NAME      = arch
+RELEASE        = 6.6.10-arch1-1
+ARCH           = x86_64
+BYTE_ORDER     = little
+VERSION        = #1 SMP PREEMPT_DYNAMIC Fri, 05 Jan 2024 16:20:41 +0000
+PLUTO_DIR      = /home/martin/PLUTO
+PLUTO_VERSION  = "4.4-patch2"
+C_COMPILER     = gcc
+MPI_C_COMPILER = mpicc
