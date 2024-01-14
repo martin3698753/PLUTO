@@ -33,7 +33,10 @@ def ChooseProblem(pluto_dir):
       shutil.copy(pluto_dir+'/Src/Templates/init.c',work_dir+'/init.c')
     
     if not os.path.exists(work_dir+'/pluto.ini'):
-      shutil.copy(pluto_dir+'/Src/Templates/pluto.ini',work_dir+'/pluto.ini')
+      shutil.copy(work_dir+'/pluto_01.ini',work_dir+'/pluto.ini')
+
+    if not os.path.exists(work_dir+'/definitions.h'):
+      shutil.copy(work_dir+'/definitions_01.h',work_dir+'/definitions.h')
 
     MakeProblem(work_dir, pluto_dir, 0, 1)
     

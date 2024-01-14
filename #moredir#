@@ -1,0 +1,11 @@
+
+TODO: Fix these
+
+HD:
+	Viscosity
+MHD:
+	FARGO
+	Hall_MHD
+	Resistive_MHD
+	Thermal_conduction
+	

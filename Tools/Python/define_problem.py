@@ -26,6 +26,7 @@ class DefineProblem(object):
     self.ini_fname        = self.work_dir + '/init.c'
     self.pluto_dir        = pluto_dir
     self.krome_dir        = pluto_dir + '/Src/Cooling/KROME/krome/'
+    # krome_dir is not in the path
     self.auto_update      = auto_update
     self.def_fname        = self.work_dir + '/definitions.h'
     self.additional_files = []
