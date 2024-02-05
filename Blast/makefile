@@ -71,10 +71,13 @@ endif
 # ---------------------------------------------------------
 
 OBJ += plm_states.o
-OBJ += ctu_step.o
-OBJ += hancock.o
-include $(SRC)/HD/makefile
-include $(SRC)/EOS/Isothermal/makefile
+OBJ += vec_pot_diff.o
+OBJ += vec_pot_update.o
+OBJ += rk_step.o
+OBJ += update_stage.o
+include $(SRC)/MHD/makefile
+include $(SRC)/MHD/CT/makefile
+include $(SRC)/EOS/Ideal/makefile
 
 # ---------------------------------------------------------
 #    PLUTO target rule
