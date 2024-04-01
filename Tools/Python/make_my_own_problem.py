@@ -80,14 +80,15 @@ class MakeProblem(object):
       scrh = pf.LocateString('ARCH')
 
     if self.auto_update == 0 or not mkfl_exits or len(scrh[0]) == 0:
-      def_list = []
-      entries  = os.listdir(self.pluto_dir + '/Config')
-      for def_file in entries: 
-        if (def_file.endswith('.defs')): def_list.append(def_file)
+      #def_list = []
+      #entries  = os.listdir(self.pluto_dir + '/Config')
+      #for def_file in entries:
+      #  if (def_file.endswith('.defs')): def_list.append(def_file)
 
-      def_list.sort()
-      menu.SetTitle("Change makefile")
-      self.arch = menu.Browse(def_list)  
+      #def_list.sort()
+      #menu.SetTitle("Change makefile")
+      #self.arch = menu.Browse(def_list)
+      self.arch = "Linux.gcc.defs"
       self.arch_string = 'ARCH         = '+ self.arch + '\n'
     else:                           
       self.arch_string = scrh[0][1]
